@@ -19,7 +19,7 @@ public class Game {
 	@Id
 	//ANOTATION PARA QUE O ID SEJA AUTO INCREMENTADO PELO BANCO DE DADOS
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	private String title;
 	
 	//"year" É UMA PALAVRA RESERVADA DO SQL, ENTÃO USAMOS A ANOTATION PARA CUSTOMIZAR O NOME DA COLUNA NO BANCO DE DADOS
