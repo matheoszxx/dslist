@@ -22,18 +22,18 @@ public class GameController {
 	@Autowired
 	private GameService gameService;
 	
-	//UTILIZAMOS UMA ANOTATION PARA MAPEAR O METODO COM O VERBO HTTP (GET, POST, PUT..)
-	@GetMapping
-	public List<GameMinDTO> findAll(){
-		List<GameMinDTO> result = gameService.findAll();
-		return result;
-	}
-	
 	@GetMapping(value = "/{id}")
 	//@PathVariable PARA FAZER QUE O ID SEJA O MESMO QUE EU COLOCAR LÁ NA REQUISIÇÃO NO POSTMAN
 	//GameDTO NA FRENTE DO PUBLIC É UM TIPO DE RETORNO
 	public GameDTO findById(@PathVariable Long id){
 		GameDTO result = gameService.findById(id);
+		return result;
+	}
+	
+	//UTILIZAMOS UMA ANOTATION PARA MAPEAR O METODO COM O VERBO HTTP (GET, POST, PUT..)
+	@GetMapping
+	public List<GameMinDTO> findAll(){
+		List<GameMinDTO> result = gameService.findAll();
 		return result;
 	}
 	
