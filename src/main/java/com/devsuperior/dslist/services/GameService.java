@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.devsuperior.dslist.dto.GameDTO;
 import com.devsuperior.dslist.dto.GameMinDTO;
 import com.devsuperior.dslist.entities.Game;
+import com.devsuperior.dslist.projections.GameMinProjection;
 import com.devsuperior.dslist.repositories.GameRepository;
 
 //REGISTRANDO CAMPONENTE COMUM NO FRAMEWORK (SPRING)
@@ -41,7 +42,14 @@ public class GameService {
 		List<Game> result = gameRepository.findAll();
 		List<GameMinDTO> dto = result.stream().map(x -> new GameMinDTO(x)).toList();
 		return dto;
+	}
 		
+		@Transactional(readOnly = true)
+		public List<GameMinDTO> findByList(Long listId) {
+			//GERA UMA CONSULTA NO BANCO DE DADOS
+			List<GameMinProjection> result = gameRepository.searchByList(listId);
+			List<GameMinDTO> dto = result.stream().map(x -> new GameMinDTO(x)).toList();
+			return dto;
 		
 	}
 }
